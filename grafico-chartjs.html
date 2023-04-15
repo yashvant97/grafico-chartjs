@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráfico Chart JS</title>
+</head>
+
+<body>
+    <div>
+        <!-- cria um char com id, ou algum tipo de identificado que vai ser usado lá no js -->
+        <div style="height:400px; width:400px;">
+            <canvas id="grafico-chart"></canvas>
+        </div>
+        <div>
+            <button onclick="mudarTamanhoDoGrafico(400,200)">
+                Width:400px,
+                Height:200px
+            </button>
+            <button onclick="mudarTamanhoDoGrafico(600,400)">
+                Width:600px,
+                Height:400px
+            </button>
+            <button onclick="mudarTamanhoDoGrafico(800,400)">
+                Width:800px,
+                Height:400px
+            </button>
+        </div>
+        <!-- import o script do chart -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            let elementoDoGrafico = document.getElementById('grafico-chart');
+
+            const labels = [
+                'Janeiro',
+                'Fevereiro',
+                'Março',
+                'Abril',
+                'Maio',
+                'Junho',
+            ];
+            const data = {
+                labels: labels,
+                datasets: [{
+                    label: 'Gráfico Simples',
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [0, 10, 5, 2, 20, 30, 45],
+                }]
+            };
+
+            const config = {
+                type: 'line',
+                data: data,
+                options: {}
+            };
+            const myChart = new Chart(
+                elementoDoGrafico,
+                config
+            );
+
+            function mudarTamanhoDoGrafico(width, height) {
+                elementoDoGrafico.style.width = width + "px";
+                elementoDoGrafico.style.height = height + "px";
+                elementoDoGrafico.resize();
+            }
+        </script>
+</body>
+
+</html>
